@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Raine! 💐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe4f3 50%, #ffd4ec 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Starry background */
+        .star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #ff69b4;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            padding-top: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            color: #d63384;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Message Box */
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+            line-height: 1.9;
+            color: #2d2d2d;
+            font-size: 1.2em;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .message-box p {
+            margin-bottom: 20px;
+        }
+
+        .message-box p:first-child {
+            font-size: 1.25em;
+            color: #c9184a;
+            font-weight: 600;
+        }
+
+        /* Floating flowers in background */
+        .floating-flower {
+            position: fixed;
+            z-index: 1;
+            animation: floatAround 20s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .floating-flower:nth-child(1) { 
+            top: 10%; 
+            left: 5%; 
+            animation-delay: 0s;
+            font-size: 80px;
+        }
+        .floating-flower:nth-child(2) { 
+            top: 20%; 
+            right: 8%; 
+            animation-delay: 2s;
+            font-size: 90px;
+        }
+        .floating-flower:nth-child(3) { 
+            top: 40%; 
+            left: 10%; 
+            animation-delay: 4s;
+            font-size: 70px;
+        }
+        .floating-flower:nth-child(4) { 
+            top: 60%; 
+            right: 12%; 
+            animation-delay: 6s;
+            font-size: 85px;
+        }
+        .floating-flower:nth-child(5) { 
+            top: 80%; 
+            left: 15%; 
+            animation-delay: 8s;
+            font-size: 75px;
+        }
+        .floating-flower:nth-child(6) { 
+            top: 30%; 
+            right: 5%; 
+            animation-delay: 10s;
+            font-size: 95px;
+        }
+        .floating-flower:nth-child(7) { 
+            top: 70%; 
+            left: 8%; 
+            animation-delay: 12s;
+            font-size: 80px;
+        }
+        .floating-flower:nth-child(8) { 
+            top: 50%; 
+            right: 15%; 
+            animation-delay: 14s;
+            font-size: 70px;
+        }
+
+        @keyframes floatAround {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg); 
+            }
+            25% { 
+                transform: translate(30px, -30px) rotate(90deg); 
+            }
+            50% { 
+                transform: translate(0, -60px) rotate(180deg); 
+            }
+            75% { 
+                transform: translate(-30px, -30px) rotate(270deg); 
+            }
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .photo-item {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(255,182,193,0.3);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(201, 24, 74, 0.85);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.95em;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Flower Garden at Bottom */
+        .flower-garden {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 30px;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: relative;
+            --fl-speed: 0.8s;
+            animation: moving-flower 4s linear infinite;
+        }
+
+        .flower:nth-child(1) { animation-delay: 0s; }
+        .flower:nth-child(2) { animation-delay: 0.3s; }
+        .flower:nth-child(3) { animation-delay: 0.6s; }
+        .flower:nth-child(4) { animation-delay: 0.9s; }
+        .flower:nth-child(5) { animation-delay: 1.2s; }
+
+        .flower__line {
+            position: relative;
+            height: 120px;
+            width: 4px;
+            background: linear-gradient(to bottom, #4a7c59 0%, #2d5016 100%);
+            margin: 0 auto;
+        }
+
+        .flower__line__leaf {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background: linear-gradient(to right, #4a7c59, #2d5016);
+            border-radius: 0 100% 100% 0;
+            animation: blooming-leaf-right var(--fl-speed) 1.6s backwards;
+        }
+
+        .flower__line__leaf--1 {
+            top: 30%;
+            left: 4px;
+            transform-origin: left;
+        }
+
+        .flower__line__leaf--2 {
+            top: 50%;
+            left: -20px;
+            transform: rotateY(180deg);
+            animation: blooming-leaf-left var(--fl-speed) 1.4s backwards;
+        }
+
+        .flower__line__leaf--3 {
+            top: 70%;
+            left: 4px;
+            animation: blooming-leaf-right var(--fl-speed) 1.2s backwards;
+        }
+
+        /* Flower petals */
+        .flower__bloom {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .flower__petal {
+            position: absolute;
+            width: 25px;
+            height: 35px;
+            background: linear-gradient(135deg, #ffb3d9 0%, #ff69b4 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: bottom center;
+        }
+
+        .flower__petal:nth-child(1) {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotate(0deg);
+            animation: blooming-petal 0.8s 1.8s backwards;
+        }
+
+        .flower__petal:nth-child(2) {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotate(72deg);
+            animation: blooming-petal 0.8s 1.9s backwards;
+        }
+
+        .flower__petal:nth-child(3) {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotate(144deg);
+            animation: blooming-petal 0.8s 2s backwards;
+        }
+
+        .flower__petal:nth-child(4) {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotate(216deg);
+            animation: blooming-petal 0.8s 2.1s backwards;
+        }
+
+        .flower__petal:nth-child(5) {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotate(288deg);
+            animation: blooming-petal 0.8s 2.2s backwards;
+        }
+
+        .flower__center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #ffeb3b 0%, #ffd700 50%, #ff9800 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
+            animation: blooming-center 0.5s 2.3s backwards;
+        }
+
+        /* Grass */
+        .grass {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent 0%, #ffd4ec 100%);
+            z-index: 4;
+        }
+
+        @keyframes moving-flower {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes blooming-leaf-right {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(70deg); }
+        }
+
+        @keyframes blooming-leaf-left {
+            0% { transform: rotateY(180deg) rotate(0deg); }
+            100% { transform: rotateY(180deg) rotate(70deg); }
+        }
+
+        @keyframes blooming-petal {
+            0% { 
+                transform: translateX(-50%) scale(0) rotate(0deg); 
+                opacity: 0;
+            }
+            100% { 
+                opacity: 1;
+            }
+        }
+
+        @keyframes blooming-center {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.7em;
+            }
+
+            .message-box {
+                padding: 28px;
+                font-size: 1.1em;
+                line-height: 1.8;
+            }
+
+            .floating-flower {
+                font-size: 60px !important;
+            }
+
+            .floating-flower:nth-child(2),
+            .floating-flower:nth-child(6) {
+                font-size: 70px !important;
+            }
+
+            .flower-garden {
+                gap: 15px;
+                height: 150px;
+            }
+
+            .flower__line {
+                height: 90px;
+            }
+
+            .flower__bloom {
+                width: 45px;
+                height: 45px;
+            }
+
+            .flower__petal {
+                width: 20px;
+                height: 28px;
+            }
+
+            .photo-gallery {
+                margin-bottom: 100px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .message-box {
+                padding: 32px;
+                font-size: 1.15em;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💐 Happy Valentine's Day, Raine! 💐</h1>
+        </div>
+
+        <div class="message-box">
+            <p>Hey, hi, yo, what's up, Raine? 😊☝️</p>
+            
+            <p>I'm here at LCC right now, and I was thinking I should send you a little something. I know we're not at that level yet, but I still want to wish you a Happy Valentine's Day. Valentine's Day isn't just for couples, right? 😊☝️</p>
+            
+            <p>Even if our conversations aren't super long, they already make my day better. I really appreciate the time you share, even your random rants and stories. I actually enjoy reading them. They mean more than you probably think.</p>
+            
+            <p>It's a little sad that I can't give you flowers in person, so while I'm here at LCC, I made this website for you. It's not much, but I put effort into it because I wanted to give you something in my own way. No pressure at all. I just genuinely enjoy talking to you and getting to know you more.</p>
+            
+            <p>So yeah, I just wanted you to know that someone appreciates you today. 😊</p>
+        </div>
+
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <img src="images/r1.png" alt="Memory 1" class="photo-img">
+            </div>
+            <div class="photo-item">
+                <img src="images/r2.png" alt="Memory 2" class="photo-img">
+            </div>
+            <div class="photo-item">
+                <img src="images/r3.png" alt="Memory 3" class="photo-img">
+            </div>
+            <div class="photo-item">
+                <img src="images/r4.png" alt="Memory 4" class="photo-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating flowers in background -->
+    <div class="floating-flower">🌸</div>
+    <div class="floating-flower">🌺</div>
+    <div class="floating-flower">🌹</div>
+    <div class="floating-flower">🌷</div>
+    <div class="floating-flower">🌻</div>
+    <div class="floating-flower">💐</div>
+    <div class="floating-flower">🌼</div>
+    <div class="floating-flower">🏵️</div>
+
+    <!-- Flower Garden at Bottom -->
+    <div class="flower-garden">
+        <div class="flower">
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+            </div>
+            <div class="flower__bloom">
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__center"></div>
+            </div>
+        </div>
+        
+        <div class="flower">
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+            </div>
+            <div class="flower__bloom">
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__center"></div>
+            </div>
+        </div>
+        
+        <div class="flower">
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+            </div>
+            <div class="flower__bloom">
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__center"></div>
+            </div>
+        </div>
+        
+        <div class="flower">
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+            </div>
+            <div class="flower__bloom">
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__center"></div>
+            </div>
+        </div>
+        
+        <div class="flower">
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+            </div>
+            <div class="flower__bloom">
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__petal"></div>
+                <div class="flower__center"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grass"></div>
+
+    <script>
+        // Create starry background
+        function createStars() {
+            const starCount = 100;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+</body>
+  </html>
